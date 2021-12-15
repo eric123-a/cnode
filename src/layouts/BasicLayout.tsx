@@ -2,6 +2,7 @@ import { ConnectState } from '@/models/connect';
 import React from 'react';
 import { Layout } from 'antd';
 import { connect } from 'umi';
+import logo from '../imgs/brand.png';
 import styles from './index.less';
 
 const Header = Layout.Header;
@@ -18,7 +19,8 @@ function BasicLayout({ children }: BasicProps) {
         <div className="navbar-inner">
           <div className="brand">
             <a href="#">
-              <img src="../imgs/brand.png" alt="" />
+              123
+              <img width="50" src={logo} alt="" />
             </a>
           </div>
           <div className="header-search">

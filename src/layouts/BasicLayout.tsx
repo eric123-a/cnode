@@ -14,7 +14,21 @@ interface BasicProps {
 function BasicLayout({ children }: BasicProps) {
   return (
     <Layout>
-      <Header className={styles.header}>header</Header>
+      <Header className={styles.header}>
+        <div className="navbar-inner">
+          <div className="brand">
+            <a href="#">
+              <img src="../imgs/brand.png" alt="" />
+            </a>
+          </div>
+          <div className="header-search">
+            <form action="">
+              <input type="text" />
+            </form>
+          </div>
+          <div className="am-navbar-right"></div>
+        </div>
+      </Header>
       <Layout>
         <Content>{children}</Content>
       </Layout>

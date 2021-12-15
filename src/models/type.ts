@@ -32,7 +32,7 @@ export interface ModelType<T> {
   reducers?: ReducerObject<T>;
 }
 
-export interface Pagination extends PaginationConfig {}
+export type Pagination = PaginationConfig;
 export type Filters<T = any> = {
   [K in keyof (T & { [k: string]: any })]?: {
     title: string;

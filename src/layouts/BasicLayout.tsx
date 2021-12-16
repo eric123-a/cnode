@@ -2,7 +2,7 @@ import { ConnectState } from '@/models/connect';
 import React from 'react';
 import { Layout } from 'antd';
 import { connect } from 'umi';
-import logo from '../imgs/brand.png';
+import logo from '../imgs/brand.svg';
 import styles from './index.less';
 import digitalocean from '../imgs/digitalocean.png';
 import qiniu from '../imgs/qiniu.png';

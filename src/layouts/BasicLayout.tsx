@@ -55,7 +55,7 @@ function BasicLayout({ children }: BasicProps) {
           </div>
         </div>
       </Header>
-      <Layout>
+      <Layout className={styles.mainbody}>
         <Content>{children}</Content>
       </Layout>
       <Footer className={styles.Footer}>

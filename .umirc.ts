@@ -16,6 +16,16 @@ const routes = [
         name: '登录',
         component: '@/pages/loginPage',
       },
+      {
+        psth: '/getStart',
+        name: '新手入门',
+        component: '@/pages/getStartPage',
+      },
+      {
+        psth: '/about',
+        name: '关于',
+        component: '@/pages/aboutPage',
+      },
     ],
   },
 ];

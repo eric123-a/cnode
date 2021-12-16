@@ -6,6 +6,7 @@ import logo from '../imgs/brand.svg';
 import styles from './index.less';
 import digitalocean from '../imgs/digitalocean.png';
 import qiniu from '../imgs/qiniu.png';
+import { history } from 'umi';
 
 const Header = Layout.Header;
 const Content = Layout.Content;
@@ -34,22 +35,22 @@ function BasicLayout({ children }: BasicProps) {
           <div className={styles.navbarRight}>
             <ul>
               <li>
-                <a>首页</a>
+                <a href="/">首页</a>
               </li>
               <li>
-                <a>新手入门</a>
+                <a onClick={() => history.push('/getStart')}>新手入门</a>
               </li>
               <li>
                 <a>API</a>
               </li>
               <li>
-                <a>关于</a>
+                <a onClick={() => history.push('/about')}>关于</a>
               </li>
               <li>
                 <a>注册</a>
               </li>
               <li>
-                <a>登录</a>
+                <a onClick={() => history.push('/login')}>登录</a>
               </li>
             </ul>
           </div>

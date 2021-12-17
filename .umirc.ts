@@ -12,19 +12,19 @@ const routes = [
         component: '@/pages/mainPage',
       },
       {
-        psth: '/login',
+        path: '/login',
         name: '登录',
         component: '@/pages/loginPage',
       },
       {
-        psth: '/getStart',
-        name: '新手入门',
-        component: '@/pages/getStartPage',
-      },
-      {
-        psth: '/about',
+        path: '/about',
         name: '关于',
         component: '@/pages/aboutPage',
+      },
+      {
+        path: '/getStart',
+        name: '新手入门',
+        component: '@/pages/getStartPage',
       },
     ],
   },

@@ -26,6 +26,11 @@ const routes = [
         name: '新手入门',
         component: '@/pages/getStartPage',
       },
+      {
+        path:'/topic',
+        name:'详情',
+        component:'@/pages/detailPage'
+      }
     ],
   },
 ];
@@ -35,4 +40,19 @@ export default defineConfig({
   },
   routes,
   fastRefresh: {},
-});
+  antd: {},
+  dva: {
+    hmr: true,
+    disableModelsReExport: true,
+    lazyLoad: true,
+  },
+  proxy: {
+    '/api':
+    {
+      target: ' https://cnodejs.org/api/v1',
+      pathRewrite: { '^/api': '' },
+      changeOrigin: true,
+    },
+  },
+})
+

@@ -61,24 +61,24 @@ declare namespace API {
   }
   //验证access
   export interface accessToken {
-    success: boolean, 
-    loginname: string, 
-    id: number, 
+    success: boolean,
+    loginname: string,
+    id: number,
     avatar_url: string
   }
   //messawges
-  export interface messages{
+  export interface messages {
     has_read_messages: [],
     hasnot_read_messages: []
   }
   //mark_all
-  export interface mark_all{
-    success:boolean,
-    marked_msgs:[]
+  export interface mark_all {
+    success: boolean,
+    marked_msgs: []
   }
   //msg_one
-  export interface mark_one{
-    success:boolean,
-    marked_msg_id:string
+  export interface mark_one {
+    success: boolean,
+    marked_msg_id: string
   }
 }

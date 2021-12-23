@@ -1,6 +1,164 @@
-.title {
-  background: rgb(121, 242, 157);
-}
+
 .container {
   min-height: 85vh;
+  display: flex;
+  flex-direction: row;
+}
+.title{
+  display: flex;
+  flex-direction: row;
+  background-color: #F6F6F6;
+  width: 100%;
+  
+}
+.node{
+  margin: 5px 13px;
+ color:#80BD01;
+ padding: 3px;
+ 
+}
+.node:hover{
+  color: black;
+}
+.node_sel{
+  margin: 5px 13px;
+  padding: 3px;
+  color: white;
+background-color: #80BD01;
+ border-radius: 10%;
+}
+.left{
+  width: 70%;
+ 
+  background-color: white;
+  margin-left: 4%;
+  margin-top: 1%;
+}
+.right{
+  width: 20%;
+
+  margin-left: 1%;
+  margin-top: 1%;
+}
+.login{
+  background-color: white;
+  height: 130px;
+  width: 290px;
+}
+.text{
+  width: 90%;
+  height: 90%;
+  margin-left: 8px;
+  margin-bottom: 10px;
+}
+.head{
+  height: 50px;
+  display: flex;
+  width: 100%;
+ 
+  align-items: center;
+}
+.text>button{
+  border-radius: 5%;
+  background-color: #5BC0DE;
+  color: white;
+  border: 0px;
+  width: 150px;
+  height: 34px;
+}
+.content{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 5px 10px;
+  width: 100%;
+ height: 60px;
+ align-items: center;
+ border: 1px solid #F5F5F5;
+ font-size: medium;
+}
+.content:hover{
+  background-color: #F5F5F5;
+}
+a:link{
+  color: black;
+}
+.tit:hover{
+    text-decoration: underline;
+}
+a:visited{
+  color: #E1E1E1;
+}
+.nobody{
+  background-color: white;
+ 
+  width: 290px;
+  margin-top: 15px;
+  padding-bottom: 20px;
+}
+.nobody>div{
+  background-color: #F6F6F6;
+  height: 40px;
+  padding: 10px;
+}
+.nobody>a{
+  color: #E1E1E1;
+  height: 30px;
+  padding: 10px;
+  display: block;
+}
+.last_reply{
+  position: absolute;
+  margin-left: 850px;
+  margin-right: 10%;
+}
+.main{
+  width: 100%;
+}
+.avat{
+  width: 30px;
+  height: 30px;
+}
+.reply{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  width: 7%;
+  height: 100%;
+  align-items: center;
+}
+.reco{
+  color: #9E78C0;
+  font-size: medium;
+}
+.vis{
+  color: #C3B4B4;
+  font-size: small;
+}
+.top{
+  margin:10px 5px;
+  padding: 1px 3px;
+  color: white;
+ background-color: #80BD01;
+ border-radius: 10%;
+  font-size: 5px;
+}
+.other{
+  margin: 10px 5px;
+  font-size: smaller;
+  padding: 1px 3px;
+  color: #C7AE99;
+ background-color: #E1E1E1;
+ border-radius: 5px;
+}
+.pagesel{
+  display: inline-block;
+   border-radius: 5%;
+   border:1px solid #E1E1E1;
+   width: 10%;
+   height: 30px;
+   margin-left: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }

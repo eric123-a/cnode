@@ -1,23 +1,28 @@
 import { request } from 'umi';
 
-export async function gettopics() {
-    return request<API.Topics>('/api/topics', {
+export async function gettopics(data:API.Topics) {
+    return request('/api/topics', {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
         },
-
+        params:{
+            page:data.page,
+            tab:data.tab,
+            limit:data.limit,
+            mdrender:data.mdrender
+        }
     })
 }
 export async function gettopicsId(id: string) {
-    return request<API.Topicsdetail>('/api/topics/' + id, {
+    return request<API.Topicsdetail>('/api/topic/'+id, {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
         },
-
+     
     })
 }
 //新建主题
@@ -154,8 +159,8 @@ export async function count(accesstoken: string) {
 
     })
 }
-export async function messages(data:API.Topicsdetail) {
-    return request<API.messages>('/api/messages?accesstoken=' + data.accesstoken+'&mdrender'+data.mdrender, {
+export async function messages(data: API.Topicsdetail) {
+    return request<API.messages>('/api/messages?accesstoken=' + data.accesstoken + '&mdrender' + data.mdrender, {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
@@ -165,28 +170,28 @@ export async function messages(data:API.Topicsdetail) {
     })
 }
 //全部标记已读
-export async function mark_all(accesstoken:string) {
+export async function mark_all(accesstoken: string) {
     return request<API.mark_all>('/api/message/mark_all', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
         },
-        data:{
-            accesstoken:accesstoken
+        data: {
+            accesstoken: accesstoken
         }
     })
 }
 //标记单个消息为已读
-export async function mark_one(accesstoken:string) {
-    return request<API.mark_one>('/api/message/mark_one?msg_id'+accesstoken, {
+export async function mark_one(accesstoken: string) {
+    return request<API.mark_one>('/api/message/mark_one?msg_id' + accesstoken, {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
         },
-        data:{
-            accesstoken:accesstoken
+        data: {
+            accesstoken: accesstoken
         }
     })
 }

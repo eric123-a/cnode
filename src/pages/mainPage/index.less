@@ -3,6 +3,8 @@
   min-height: 85vh;
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
+  border-radius: 5px;
 }
 .title{
   display: flex;
@@ -11,6 +13,10 @@
   width: 100%;
   
 }
+li{
+  list-style:none
+}
+
 .node{
   margin: 5px 13px;
  color:#80BD01;
@@ -83,12 +89,13 @@ background-color: #80BD01;
 a:link{
   color: black;
 }
+.tit:visited{
+  color: #E1E1E1;
+}
 .tit:hover{
     text-decoration: underline;
 }
-a:visited{
-  color: #E1E1E1;
-}
+
 .nobody{
   background-color: white;
  
@@ -100,17 +107,27 @@ a:visited{
   background-color: #F6F6F6;
   height: 40px;
   padding: 10px;
+ 
 }
 .nobody>a{
-  color: #E1E1E1;
+  color: #474747;
   height: 30px;
   padding: 10px;
   display: block;
+   font-size: 13px;
 }
 .last_reply{
-  position: absolute;
-  margin-left: 850px;
-  margin-right: 10%;
+   margin-left: auto;
+  
+ left: 30px;
+  font-size: smaller;
+  color: #444444;
+}
+.login_a:hover{
+  text-decoration: underline;
+}
+.but:hover{
+  background-color: #2F96B4;
 }
 .main{
   width: 100%;
@@ -153,12 +170,59 @@ a:visited{
 }
 .pagesel{
   display: inline-block;
-   border-radius: 5%;
-   border:1px solid #E1E1E1;
-   width: 10%;
-   height: 30px;
-   margin-left: 20px;
+  
    display: flex;
-   flex-direction: column;
+   flex-direction: row;
    align-items: center;
+}
+.page{
+  margin: 10px;
+}
+.scan_main
+{
+  background-color: white;
+  width: 290px;
+  margin-top: 15px;
+  padding-bottom: 20px;
+  
+}
+.scan_tit{
+   width: 290px;
+   height: 40px;
+   background-color: #F6F6F6;
+   padding: 10px;
+}
+.scan{
+  width: 290px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pagesel>button{
+   border: 1px solid #E1E1E1;
+   background-color: white;
+   width: 30px;
+   height: 33px;
+  display: block;
+}
+.button_sel{
+  border: 1px solid #E1E1E1;
+  background-color: white;
+  color: #80BD01;
+  width: 50px;
+  height: 33px;
+ display: block;
+}
+.pagesel>button:hover{
+ 
+  background-color: #F5F5F5;
+ 
+}
+.but_left{
+  border-radius: 5px 0px 0px 5px;
+}
+.but_right{
+  border-radius: 0px 5px 5px 0px;
 }

@@ -99,7 +99,7 @@ export async function usercollect(loginname: string) {
 }
 //评论
 export async function createreplies(topic_id: string, data: API.replies) {
-    return request<API.repliesre>('/api/topic/' + topic_id + 'replies', {
+    return request<API.repliesre>('/api/topic/' + topic_id + '/replies', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ export async function createreplies(topic_id: string, data: API.replies) {
         data: {
             accesstoken: data.accesstoken,
             content: data.content,
-            reply_id: data.reply_id
+           
         }
     })
 }

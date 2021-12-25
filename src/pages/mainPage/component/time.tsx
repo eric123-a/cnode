@@ -1,5 +1,5 @@
-export default function getDateDiff(dateTimeStamp:any){
-    let result
+export default function getDateDiff(dateTimeStamp:number):string{
+    let result:string
     const minute = 1000 * 60;
     const hour = minute * 60;
     const day = hour * 24;
@@ -7,7 +7,7 @@ export default function getDateDiff(dateTimeStamp:any){
     const month = day * 30;
     const now = new Date().getTime();
     const diffValue = now - dateTimeStamp;
-    if(diffValue < 0){return;}
+    if(diffValue < 0){return '';}
     const monthC =diffValue/month;
     const weekC =diffValue/(7*day);
     const dayC =diffValue/day;

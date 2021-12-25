@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from '../index.less';
 import { content } from '../type'
 import { gettopics } from '../../../services/user'
-import { Link } from 'umi';
 import {useHistory} from 'react-router-dom';
 import getDateDiff from './time'
 

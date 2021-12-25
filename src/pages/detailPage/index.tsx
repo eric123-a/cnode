@@ -14,14 +14,42 @@ export default function IndexPage() {
     const [topic, settopic] = useState([])
     const [reply, setreply] = useState([])
     const [score, setscore] = useState(0)
+    const [istop, setistop] = useState(false)
+    const [title, settitle] = useState('')
+    const [det, setdet] = useState({ create_at: '', tab: '', visit_count: 0, last_reply_at: '' })
 
     const { TextArea } = Input;
     useEffect(() => {
         gettopicsId(id).then((e: any) => {
             sethtml(e.data.content)
             setauthor(e.data.author)
-
+            console.log('dat', e.data.content)
             setreply(e.data.replies)
+            setistop(e.data.top)
+
+            settitle(e.data.title)
+            const cretime: string = getDateDiff(new Date(e.data.create_at).getTime())
+            const last_time: string = getDateDiff(new Date(e.data.last_reply_at).getTime())
+            let tab = ''
+            switch (e.data.tab) {
+                case 'ask':
+                    tab = '问答'
+                    break
+                case 'share':
+                    tab = '分享'
+                    break
+                case 'job':
+                    tab = '招聘'
+                    break
+                default:
+                    break;
+            }
+            setdet({
+                create_at: cretime,
+                tab: tab,
+                visit_count: e.data.visit_count,
+                last_reply_at: last_time
+            })
             e.data.content !== null ? document.getElementById('id')!.innerHTML = e.data.content : ''
 
         })
@@ -40,11 +68,14 @@ export default function IndexPage() {
             content: e.target.value,
         }
         createreplies(id, data).then((e: any) => {
-            if(e.success)
-            alert('评论成功')
+            if (e.success)
+            {
+                alert('评论成功')
+                window.location.reload()
+            }
         })
     }
-    function toup(id: string, index:number) {
+    function toup(id: string, index: number) {
 
         ups(id, 'c76c4bd5-773e-43a2-88cb-5767bf3d3b6c').then((e: any) => {
             const re: any = reply
@@ -55,13 +86,21 @@ export default function IndexPage() {
     return (
         <div className={styles.container}>
             <div className={styles.left}>
+                <div className={styles.title}>
+                    <div className={styles.toptit}>  {
+                        istop && <div className={styles.istop}>置顶</div>
+                    }
+                        <div style={{marginLeft:"7px"}}><b>{title}</b></div>
+                    </div>
+                    <div className={styles.det}>*发布于{det.create_at}*作者{author.loginname}*{det.visit_count}次浏览*来自{det.tab}</div>
+                </div>
                 <div id='id' className={styles.main}></div>
-                <div><TextArea rows={10} onPressEnter={commit} /></div>
+                <div style={{marginTop:"10px"}}><TextArea rows={10} onPressEnter={commit} /></div>
                 <div className={styles.reply}>
                     <div className={styles.replynum}>{reply.length}回复</div>
                     {
                         reply && reply.map((item: any, index: number) => {
-                            // console.log('1', item.content)
+
                             if (document.getElementById(item.id) !== null) {
                                 document.getElementById(item.id)!.innerHTML = item.content
                             }
@@ -72,7 +111,7 @@ export default function IndexPage() {
 
                                 <div className={styles.reply_item} key={item.id} >
                                     <div className={styles.reply_avatar}>
-                                        <img src={item.author.avatar_url} width="60px"></img>
+                                        <img src={item.author.avatar_url} width="30px" className={styles.reply_ava}></img>
                                         <div >{item.author.loginname}</div>
                                         <div className={styles.reply_time}>{index + 1}楼*{item.time}</div>
                                         <div className={styles.up}><img src={up} width="15px" onClick={() => toup(item.id, index)}></img>{item.ups.length}</div>

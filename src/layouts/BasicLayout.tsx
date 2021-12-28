@@ -1,5 +1,5 @@
 import { ConnectState } from '@/models/connect';
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
 import { connect } from 'umi';
 import logo from '../imgs/brand.svg';
@@ -16,6 +16,17 @@ interface BasicProps {
   children: React.ReactNode;
 }
 function BasicLayout({ children }: BasicProps) {
+  const [inputValue, setInputValue] = useState('');
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+  };
+  const handleSearch = (e: any) => {
+    console.log(e);
+    if (e.keyCode === 13) {
+      console.log(123);
+      window.open(`https://www.baidu.com/s?ie=UTF-8&wd=${inputValue}`);
+    }
+  };
   return (
     <Layout>
       <Header className={styles.header}>
@@ -27,9 +38,14 @@ function BasicLayout({ children }: BasicProps) {
               </a>
             </div>
             <div className={styles.headerSearch}>
-              <form action="" className={styles.headerSearch}>
-                <input type="text" />
-              </form>
+              <div className={styles.headerSearch}>
+                <input
+                  value={inputValue}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                  onKeyUp={handleSearch}
+                  type="text"
+                />
+              </div>
             </div>
           </div>
           <div className={styles.navbarRight}>

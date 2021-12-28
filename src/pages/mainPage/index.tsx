@@ -6,7 +6,7 @@ import Pagesel from './component/pagesel';
 import logo1 from '../../imgs/side1.png';
 import logo2 from '../../imgs/golangtc-logo.png';
 import logo3 from '../../imgs/phphub-logo.png';
-import { Pagination } from 'antd';
+
 
 
 export default function IndexPage() {
@@ -20,7 +20,8 @@ export default function IndexPage() {
   function setdata(e: string) {
     setTitle(e)
     // console.log(title)
-    setPram({ ...pram, tab: e })
+    setPram({ ...pram, tab: e,page:1 })
+
     //console.log(pram)
   }
   function pagechange(page: number) {
@@ -33,7 +34,7 @@ export default function IndexPage() {
         <Title settitle={setdata} />
         <Content num={pram} />
         <div className={styles.page}>
-          <Pagesel pagechange={pagechange}/>
+          <Pagesel pagechange={pagechange} tab={title}/>
         </div>
       </div>
       <div className={styles.right}>
@@ -89,7 +90,7 @@ export default function IndexPage() {
             <br />
             <a
               className={styles.login_a}
-               style={{ color: "#E1E1E1" }}
+              style={{ color: "#E1E1E1" }}
               href="https://github.com/soliury/noder-react-native"
               target="_blank"
               rel="noreferrer"

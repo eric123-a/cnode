@@ -1,7 +1,7 @@
 import { request } from 'umi';
 
 export async function gettopics(data:API.Topics) {
-    return request('/api/topics', {
+    return request('https://cnodejs.org/api/v1/topics', {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ export async function gettopics(data:API.Topics) {
     })
 }
 export async function gettopicsId(id: string) {
-    return request<API.Topicsdetail>('/api/topic/'+id, {
+    return request<API.Topicsdetail>('https://cnodejs.org/api/v1/topic/'+id, {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export async function usercollect(loginname: string) {
 }
 //评论
 export async function createreplies(topic_id: string, data: API.replies) {
-    return request<API.repliesre>('/api/topic/' + topic_id + '/replies', {
+    return request<API.repliesre>('https://cnodejs.org/api/v1/topic/' + topic_id + '/replies', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export async function createreplies(topic_id: string, data: API.replies) {
 }
 //点赞
 export async function ups(reply_id: string, data: string) {
-    return request<API.ups>('/api/reply/' + reply_id + '/ups', {
+    return request<API.ups>('https://cnodejs.org/api/v1/reply/' + reply_id + '/ups', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ export async function ups(reply_id: string, data: string) {
 }
 //用户
 export async function userdetail(loginname: string) {
-    return request('/api/user/' + loginname, {
+    return request('https://cnodejs.org/api/v1/user/' + loginname, {
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ export async function userdetail(loginname: string) {
     })
 }
 export async function accessToken(accessToken: string) {
-    return request<API.accessToken>('/api/accesstoken', {
+    return request<API.accessToken>('https://cnodejs.org/api/v1/accesstoken', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json',

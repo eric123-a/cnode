@@ -9,9 +9,10 @@ import {
 } from '../../services/user';
 import up from '../../imgs/up.png';
 import getDateDiff from '../mainPage/component/time';
-import { Input } from 'antd';
+import { Input,Button } from 'antd';
 
 export default function IndexPage() {
+  
   const location: any = useLocation();
   const id = location.state.id;
   const [html, sethtml] = useState('');
@@ -21,6 +22,8 @@ export default function IndexPage() {
     score: 1,
     recent_topics: [],
   });
+  let replyvalue=''
+  const [call,setcall]=useState(false)
   const [topic, settopic] = useState([]);
   const [reply, setreply] = useState([]);
   const [score, setscore] = useState(0);
@@ -38,10 +41,8 @@ export default function IndexPage() {
     gettopicsId(id).then((e: any) => {
       sethtml(e.data.content);
       setauthor(e.data.author);
-      console.log('dat', e.data.content);
       setreply(e.data.replies);
       setistop(e.data.top);
-
       settitle(e.data.title);
       const cretime: string = getDateDiff(new Date(e.data.create_at).getTime());
       const last_time: string = getDateDiff(
@@ -71,18 +72,24 @@ export default function IndexPage() {
         ? (document.getElementById('id')!.innerHTML = e.data.content)
         : '';
     });
+
   }, [id]);
   useEffect(() => {
-    console.log(author);
-    userdetail(author.loginname).then((e: any) => {
-      settopic(e.data.recent_topics);
-      setscore(e.data.score);
-    });
+    
+
+    if (call) {
+      userdetail(author.loginname).then((e: any) => {
+        settopic(e.data.recent_topics);
+        setscore(e.data.score);
+      });
+    }
+    setcall(true)
+    
   }, [author]);
-  function commit(e: any) {
+  function commit() {
     const data = {
       accesstoken: 'c76c4bd5-773e-43a2-88cb-5767bf3d3b6c',
-      content: e.target.value,
+      content: replyvalue,
     };
     createreplies(id, data).then((e: any) => {
       if (e.success) {
@@ -92,11 +99,14 @@ export default function IndexPage() {
     });
   }
   function toup(id: string, index: number) {
-    ups(id, 'c76c4bd5-773e-43a2-88cb-5767bf3d3b6c').then((e: any) => {
+    ups(id, 'c76c4bd5-773e-43a2-88cb-5767bf3d3b6c').then(() => {
       const re: any = reply;
       re[index].ups.length = re[index].ups.length + 1;
       setreply([...re]);
     });
+  }
+  function setvalue(e:any) {
+    replyvalue=e.target.value
   }
   return (
     <div className={styles.container}>
@@ -123,8 +133,10 @@ export default function IndexPage() {
           </div>
         </div>
         <div id="id" className={styles.main}></div>
-        <div style={{ marginTop: '10px' }}>
-          <TextArea rows={10} onPressEnter={commit} />
+        <div className={styles.addreply} style={{ marginTop: '10px' }}>
+          <div className={styles.replynum}>添加回复</div>
+          <TextArea className={styles.text} rows={10} onChange={setvalue} />
+          <Button type="primary" className={styles.but} onClick={commit}>添加评论</Button>
         </div>
         <div className={styles.reply}>
           <div className={styles.replynum}>{reply.length}回复</div>
@@ -144,7 +156,7 @@ export default function IndexPage() {
                       width="30px"
                       className={styles.reply_ava}
                     ></img>
-                    <div>{item.author.loginname}</div>
+                    <div className={styles.loginname}>{item.author.loginname}</div>
                     <div className={styles.reply_time}>
                       {index + 1}楼*{item.time}
                     </div>

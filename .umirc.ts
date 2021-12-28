@@ -35,6 +35,12 @@ const routes = [
   },
 ];
 export default defineConfig({
+  history:{
+    type:'hash'
+  },
+  base:'./',
+  publicPath:'./',
+  hash:true,
   nodeModulesTransform: {
     type: 'none',
   },
@@ -46,13 +52,13 @@ export default defineConfig({
     disableModelsReExport: true,
     lazyLoad: true,
   },
-  proxy: {
+/*  proxy: {
     '/api':
     {
       target: ' https://cnodejs.org/api/v1',
       pathRewrite: { '^/api': '' },
       changeOrigin: true,
     },
-  },
+  },*/
 })
 

@@ -11,7 +11,7 @@ export default function Content(props: content) {
   useEffect(() => {
     gettopics(props.num).then((e) => {
       setdata(e.data);
-      console.log('data', data);
+   
     });
   }, [props]);
 
